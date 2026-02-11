@@ -1,0 +1,35 @@
+1. What is the difference between synchronous and asynchronous file operations?
+2. When should you use file streams instead of reading the entire file?
+3. Explain the purpose of the ‘utf8’ encoding parameter in file operations.
+4. What are the common error codes in file system operations and what do they mean?
+5. How would you safely delete a directory with all its contents?
+6. Explain the concept of piping in streams with an example.
+7. Why is it important to handle errors in file operations?
+8. What is the difference between writeFile and appendFile methods?
+
+
+--------------------------------------Answers:---------------------------------------------
+
+1.Synchronous file operations stop the program and wait until the file work is done. Nothing else runs in between.Asynchronous operations don’t stop the program — the code keeps running while the file is being read or written using callbacks or promises. That’s why async is better for real applications.
+
+2.You should use file streams when the file is big. Streams read the file little by little instead of loading the whole thing into memory, so it saves memory and works faster.
+
+3.utf8 is used when the file has normal text in it. It helps Node.js read or write the content as readable text.
+If you don’t use utf8, the file is treated like binary data and comes as a buffer
+
+4.Some common error codes are:
+ENOENT = the file or folder doesn’t exist
+EACCES = permission is denied
+EEXIST = the file already exists
+EISDIR = it expected a file but found a folder
+ENOTDIR = it expected a folder but found a file
+
+5.You can delete a folder along with everything inside it by using the remove method with recursive and force options. This removes the directory and all files inside safely.
+
+6.Piping means directly sending data from one stream to another.
+For example, you can read a file using a read stream and directly write it into another file using a write stream. The data flows automatically.
+
+7.Error handling is important because files might not exist, permissions can be denied, or something can go wrong. Handling errors helps the program run safely and not crash suddenly.
+
+8.writeFile replaces the old content or creates a new file.
+appendFile adds new content at the end of the file without removing the old data.

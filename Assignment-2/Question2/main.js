@@ -1,0 +1,4 @@
+const utils = require('./stringUtils');
+console.log(utils.capitalize("hello"));
+console.log(utils.reverse("world"));
+console.log(utils.countVowels("education"));
